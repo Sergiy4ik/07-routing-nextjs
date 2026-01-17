@@ -1,5 +1,5 @@
 export default function Loader() {
     return (
-        <p>Loading, please wait...</p>
+        <p className="loading">Loading, please wait...</p>
     )
 }
