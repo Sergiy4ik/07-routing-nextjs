@@ -36,7 +36,7 @@ export default function NotePreview() {
                     <p className={css.content}>{data?.content}</p>
                     <p className={css.date}>{data?.createdAt}</p>
                 </div>
-                <button onClick={close} type="button" className={css.backBtn}>
+                <button onClick={handleClose} type="button" className={css.backBtn}>
                     Back
                 </button>
             </div>

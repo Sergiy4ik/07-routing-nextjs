@@ -3,11 +3,11 @@ import NotesClient from "./Notes.client";
 
 import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
 
-type Props = {
+interface NotesByTagProps {
     readonly params: Promise<{ slug: string[] }>;
 };
 
-export default async function NotesByTag({ params }: Props) {
+export default async function NotesByTag({ params }: NotesByTagProps) {
     const { slug } = await params;
 
     const search = "";

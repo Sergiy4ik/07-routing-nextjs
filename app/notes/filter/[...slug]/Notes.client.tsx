@@ -5,6 +5,7 @@ import css from './notes.module.css';
 import { useState } from 'react';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { useDebounce } from 'use-debounce';
+import { useParams } from 'next/navigation';
 
 import { fetchNotes } from '@/lib/api';
 
@@ -13,18 +14,20 @@ import Pagination from '@/components/Pagination/Pagination';
 import NoteList from '@/components/NoteList/NoteList';
 import Modal from '@/components/Modal/Modal';
 import NoteForm from '@/components/NoteForm/NoteForm';
- 
+
 
 export default function NotesClient() {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const [debouncedSearch] = useDebounce(search, 500);
 
+  const { slug } = useParams();
+  const tag = slug?.[0] === "all" ? undefined : slug?.[0];
+
   const { data } = useQuery({
-    queryKey: ['notes', page, debouncedSearch],
-    queryFn: () => fetchNotes(page, debouncedSearch),
+    queryKey: ['notes', page, debouncedSearch, tag],
+    queryFn: () => fetchNotes(page, debouncedSearch, tag),
     placeholderData: keepPreviousData,
   });
 
