@@ -22,7 +22,7 @@ export default async function NotesByTag({ params }: NotesByTagProps) {
 
     return (
         <HydrationBoundary state={dehydrate(queryClient)}>
-            <NotesClient />
+            <NotesClient tag={tag} />
         </HydrationBoundary>
     );
 }

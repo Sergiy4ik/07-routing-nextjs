@@ -15,15 +15,15 @@ import NoteList from '@/components/NoteList/NoteList';
 import Modal from '@/components/Modal/Modal';
 import NoteForm from '@/components/NoteForm/NoteForm';
 
+interface NotesClientProps {
+  tag: string | undefined;
+}
 
-export default function NotesClient() {
+export default function NotesClient({ tag }: NotesClientProps) {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [debouncedSearch] = useDebounce(search, 500);
-
-  const { slug } = useParams();
-  const tag = slug?.[0] === "all" ? undefined : slug?.[0];
 
   const { data } = useQuery({
     queryKey: ['notes', page, debouncedSearch, tag],
