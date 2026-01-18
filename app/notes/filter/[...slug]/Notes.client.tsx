@@ -5,7 +5,6 @@ import css from './notes.module.css';
 import { useState } from 'react';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { useDebounce } from 'use-debounce';
-import { useParams } from 'next/navigation';
 
 import { fetchNotes } from '@/lib/api';
 
