@@ -1,5 +1,15 @@
+"use client";
+
+import Modal from "@/components/Modal/Modal";
+
 export default function Loader() {
+    const close = () => {
+        return;
+    }
+
     return (
-        <p className="loading">Loading, please wait...</p>
+        <Modal onClose={close}>
+            <p className="loading">Loading, please wait...</p>
+        </Modal>
     )
 }
